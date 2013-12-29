@@ -5,6 +5,8 @@ var compile = require('./lib/compile')
 module.exports = function(options) {
   options = options || {}
 
+  console.log(options)
+
   return es.map(function(file, cb) {
     options.contents = file.contents.toString()
 
