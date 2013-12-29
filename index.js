@@ -84,30 +84,30 @@ module.exports = function(opt) {
     counter += modules.length
     modules = modules.join('\n')
 
-    var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
-    var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
-    var bundle = "";
-    var targetModule = f.module || options.module;
+    var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : ''
+    var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : ''
+    var bundle = ""
+    var targetModule = f.module || options.module
 
     // If options.module is a function, use that to get the targetModule
     if (utils.kindOf(targetModule) === 'function') {
-targetModule = targetModule(f);
+targetModule = targetModule(f)
     }
     //Allow a 'no targetModule if module is null' option
     if (targetModule) {
-      bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
+      bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])"
       if (options.target === 'js') {
-        bundle += ';';
+        bundle += ';'
       }
 
-      bundle += "\n\n";
+      bundle += "\n\n"
     }
-    gutil.log(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
+    gutil.log(f.dest, utils.normalizelf(fileHeader + bundle + modules + fileFooter))
   }
 
   //Just have one output, so if we making thirty files it only does one line
   gutil.log("Successfully converted "+(""+counter).green +
-                      " html templates to " + options.target + ".");
+                      " html templates to " + options.target + ".")
 
   return es.map(compile)
 }
