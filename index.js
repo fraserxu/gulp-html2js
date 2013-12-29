@@ -3,9 +3,21 @@ var guitl = require('gulp-util')
 var path = require('path')
 var iconv = require('iconv-lite')
 var minify = require('html-minifier').minify
-var utils = require('lib/utils')
+var utils = require('./lib/utils')
 
-module.exports = function(opt) {
+module.exports = function(options) {
+  if (!options) {
+    options = {
+      base: 'src',
+      module: 'templates-' + options.target,
+      quoteChar: '"',
+      fileHeaderString: '',
+      fileFooterString: '',
+      indentString: '  ',
+      target: 'js',
+      htmlmin: {}
+    }
+  }
 
   var escapeContent = function(content, quoteChar, indentString) {
     var bsRegexp = new RegExp('\\\\', 'g')
@@ -30,6 +42,7 @@ module.exports = function(opt) {
       return false
     } else {
       return true
+    }
   }
 
   // return template content
@@ -62,7 +75,7 @@ module.exports = function(opt) {
     return module
   }
 
-  var counter = 0
+  // var counter = 0
 
   function compile(f, cb) {
     var moduleNames = []
@@ -81,7 +94,7 @@ module.exports = function(opt) {
       }
     })
 
-    counter += modules.length
+    // counter += modules.length
     modules = modules.join('\n')
 
     var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : ''
@@ -91,7 +104,7 @@ module.exports = function(opt) {
 
     // If options.module is a function, use that to get the targetModule
     if (utils.kindOf(targetModule) === 'function') {
-targetModule = targetModule(f)
+      targetModule = targetModule(f)
     }
     //Allow a 'no targetModule if module is null' option
     if (targetModule) {
@@ -102,12 +115,14 @@ targetModule = targetModule(f)
 
       bundle += "\n\n"
     }
-    gutil.log(f.dest, utils.normalizelf(fileHeader + bundle + modules + fileFooter))
+    utils.writeFile(f.dest, utils.normalizelf(fileHeader + bundle + modules + fileFooter))
+
+    cb(null, f)
   }
 
   //Just have one output, so if we making thirty files it only does one line
-  gutil.log("Successfully converted "+(""+counter).green +
-                      " html templates to " + options.target + ".")
+  // gutil.log("Successfully converted "+(""+counter).green +
+                      // " html templates to " + options.target + ".")
 
   return es.map(compile)
 }

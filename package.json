@@ -22,6 +22,9 @@
     "gulp": "~3.2.1"
   },
   "dependencies": {
-    "html-minifier": "~0.5.4"
+    "html-minifier": "~0.5.4",
+    "iconv-lite": "~0.2.11",
+    "event-stream": "~3.0.20",
+    "gulp-util": "~2.2.0"
   }
 }
