@@ -1,9 +1,9 @@
 var es = require('event-stream')
 var guitl = require('gulp-util')
 var path = require('path')
-var fs = require('fs')
 var iconv = require('iconv-lite')
 var minify = require('html-minifier').minify
+var utils = require('lib/utils')
 
 module.exports = function(opt) {
 
@@ -23,36 +23,9 @@ module.exports = function(opt) {
     return p
   }
 
-  var fileExist = function() {
-    var filepath = path.join.apply(path, arguments)
-    return fs.existsSync(filepath)
-  }
-
-  // Read a file, return its contents.
-  var readFile = function(filepath, options) {
-    if (!options) { options = {}; }
-    var contents;
-    gutil.log('Reading ' + filepath + '...');
-    try {
-      contents = fs.readFileSync(String(filepath));
-      // If encoding is not explicitly null, convert from encoded buffer to a
-      // string. If no encoding was specified, use the default.
-      if (options.encoding !== null) {
-        contents = iconv.decode(contents, options.encoding || file.defaultEncoding);
-        // Strip any BOM that might exist.
-        if (!file.preserveBOM && contents.charCodeAt(0) === 0xFEFF) {
-          contents = contents.substring(1);
-        }
-      }
-      return contents;
-    } catch(e) {
-      throw gutil.log('Unable to read "' + filepath + '" file (Error code: ' + e.code + ').', e);
-    }
-  };
-
   // Warn on and remove invalid source files (if nonull was set).
   var existFilter = function(filepath) {
-    if(!fileExist(filepath)) {
+    if(!utils.fileExist(filepath)) {
       gutil.log('Source file "' + filepath + '" not found', gutil.colors.cyan("123"))
       return false
     } else {
@@ -61,7 +34,7 @@ module.exports = function(opt) {
 
   // return template content
   var getContent = function(filepath, quoteChar, indentString, htmlmin) {
-    var content = readFile(filepath)
+    var content = utils.readFile(filepath)
 
     if(Object.keys(htmlmin).length) {
       try{
@@ -89,9 +62,52 @@ module.exports = function(opt) {
     return module
   }
 
-  function compile(file, cb) {
+  var counter = 0
 
+  function compile(f, cb) {
+    var moduleNames = []
+
+    var modules = f.src.filter(existsFilter).map(function(filepath) {
+
+      var moduleName = normalizePath(path.relative(options.base, filepath))
+      if (utils.kindOf(options.rename) === 'function') {
+        moduleName = options.rename(moduleName)
+      }
+      moduleNames.push("'" + moduleName + "'")
+      if (options.target === 'js') {
+        return compileTemplate(moduleName, filepath, options.quoteChar, options.indentString, options.useStrict, options.htmlmin)
+      } else {
+        gutil.log('Unknow target "' + options.target + '" specified')
+      }
+    })
+
+    counter += modules.length
+    modules = modules.join('\n')
+
+    var fileHeader = options.fileHeaderString !== '' ? options.fileHeaderString + '\n' : '';
+    var fileFooter = options.fileFooterString !== '' ? options.fileFooterString + '\n' : '';
+    var bundle = "";
+    var targetModule = f.module || options.module;
+
+    // If options.module is a function, use that to get the targetModule
+    if (utils.kindOf(targetModule) === 'function') {
+targetModule = targetModule(f);
+    }
+    //Allow a 'no targetModule if module is null' option
+    if (targetModule) {
+      bundle = "angular.module('" + targetModule + "', [" + moduleNames.join(', ') + "])";
+      if (options.target === 'js') {
+        bundle += ';';
+      }
+
+      bundle += "\n\n";
+    }
+    gutil.log(f.dest, grunt.util.normalizelf(fileHeader + bundle + modules + fileFooter));
   }
+
+  //Just have one output, so if we making thirty files it only does one line
+  gutil.log("Successfully converted "+(""+counter).green +
+                      " html templates to " + options.target + ".");
 
   return es.map(compile)
 }
