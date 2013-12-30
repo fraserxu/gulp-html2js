@@ -47,7 +47,7 @@ Note that this plugin does not compile the templates. It simply caches the templ
 
 (MIT License)
 
-Copyright (c) 2013 Fraserxu <xvfen123@gmail.com>
+Copyright (c) 2013 Fraserxu <xvfeng123@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
