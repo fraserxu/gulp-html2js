@@ -3,6 +3,7 @@ gulp-html2js(WIP)
 
 Gulp plugin for converting AngularJS templates to JavaScript
 
+### See more from [grunt-html2js](https://github.com/karlgoldstein/grunt-html2js)
 
 ## Information
 
@@ -36,7 +37,7 @@ gulp.task('scripts', function() {
 
 ## Overview
 
-Angular-JS normally loads templates lazily from the server as you reference them in your application (via ng-include, routing configuration or other mechanism). Angular caches the source code for each template so that subsequent references do not require another server request. However, if your application is divided into many small components, then the initial loading process may involve an unacceptably large number of additional server requests.
+Angular-JS normally loads templates lazily from the server as you reference them in your application (via `ng-include`, routing configuration or other mechanism). Angular caches the source code for each template so that subsequent references do not require another server request. However, if your application is divided into many small components, then the initial loading process may involve an unacceptably large number of additional server requests.
 
 This plugin converts a group of templates to JavaScript and assembles them into an Angular module that primes the cache directly when the module is loaded. You can concatenate this module with your main application code so that Angular does not need to make any additional server requests to initialize the application.
 
@@ -46,7 +47,7 @@ Note that this plugin does not compile the templates. It simply caches the templ
 
 (MIT License)
 
-Copyright (c) 2013 Fraserxu <xvfen123@gmail..com>
+Copyright (c) 2013 Fraserxu <xvfen123@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
