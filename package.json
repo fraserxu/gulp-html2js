@@ -1,6 +1,6 @@
 {
   "name": "gulp-html2js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Gulp plugin for converting AngularJS templates to JavaScript",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
   "dependencies": {
     "html-minifier": "~0.5.4",
     "event-stream": "~3.0.20",
-    "gulp-util": "~2.2.0",
-    "clone": "~0.1.11"
+    "gulp-util": "~2.2.0"
   }
 }
