@@ -8,17 +8,14 @@ module.exports = function(options) {
 
   return es.map(function(file, cb) {
     var newFile = clone(file)
-    options.contents = file.contents.toString()
 
-    compile(file.path, options, function(err, data) {
-      if (err) {
-        return cb(err)
-      }
+    compile(file, options, function(err, data) {
+      if (err) return cb(err)
 
       var newContents = data
+
       newFile.contents = new Buffer(newContents)
 
-      gutil.log('gulp-html2js write: ' + data)
       cb(null, newFile)
     })
   })
