@@ -1,9 +1,9 @@
-angular.module("../test/fixtures/test.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("../test/fixtures/test.tpl.html",
+angular.module("../fixtures/test.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../fixtures/test.tpl.html",
     "Testing01...");
 }]);
 
-angular.module("../test/fixtures/test2.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("../test/fixtures/test2.tpl.html",
+angular.module("../fixtures/test2.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../fixtures/test2.tpl.html",
     "Testing02...");
 }]);

@@ -1,10 +1,10 @@
-var html2js = require('../')
-var gutil = require('gulp-util')
 var gulp = require('gulp')
+var concat = require('gulp-concat')
+var html2js = require('../')
 
-gulp.task('html2js', function() {
-  gulp.src(['fixtures/*.tpl.html'])
-    .pipe(html2js({
-      dest: 'tmp/templates.js'
-    }))
+gulp.task('scripts', function() {
+  gulp.src('fixtures/*.html')
+    .pipe(html2js())
+    .pipe(concat('template.js'))
+    .pipe(gulp.dest('./'))
 })
