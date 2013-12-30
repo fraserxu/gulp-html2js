@@ -21,6 +21,10 @@ Gulp plugin for converting AngularJS templates to JavaScript
 </tr>
 </table>
 
+## Install
+Install with [npm](https://npmjs.org/package/gulp-html2js)
+`npm install --save-dev gulp-html2js`
+
 ## Usage
 
 ```javascript
