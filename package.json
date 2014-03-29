@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Gulp plugin for converting AngularJS templates to JavaScript",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha --reporter spec"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/fraserxu/gulp-html2js.git"
