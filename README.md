@@ -18,7 +18,10 @@ var html2js = require('gulp-html2js')
 
 gulp.task('scripts', function() {
   gulp.src('fixtures/*.html')
-    .pipe(html2js())
+    .pipe(html2js({
+      outputModuleName: 'template-test',
+      useStrict: true
+    }))
     .pipe(concat('template.js'))
     .pipe(gulp.dest('./'))
 })
