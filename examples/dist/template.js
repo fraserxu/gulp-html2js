@@ -1,28 +1,30 @@
-var app;
+(function(module) {
 try { app = angular.module("template-test"); }
 catch(err) { app = angular.module("template-test", []); }
 app.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("../templates/test.tpl.html",
+  $templateCache.put("templates/test.tpl.html",
     "Testing01...");
 }]);
+})();
 
-var app;
+(function(module) {
 try { app = angular.module("template-test"); }
 catch(err) { app = angular.module("template-test", []); }
 app.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("../templates/test2.tpl.html",
+  $templateCache.put("templates/test2.tpl.html",
     "Testing02...");
 }]);
+})();
 
-var app;
+(function(module) {
 try { app = angular.module("template-test"); }
 catch(err) { app = angular.module("template-test", []); }
 app.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("../templates/test3.tpl.html",
-    "<div class=\"quotes should be escaped\">\n" +
+  $templateCache.put("templates/test3.tpl.html",
+    "<div class=\"awesome class\">\n" +
     "  <span>\n" +
     "    <span>\n" +
     "      <span>\n" +
@@ -32,3 +34,4 @@ app.run(["$templateCache", function($templateCache) {
     "  </span>\n" +
     "</div>");
 }]);
+})();

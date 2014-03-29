@@ -28,7 +28,7 @@ gulp.task('scripts', function() {
 ```
 
 ## Available options
-* base - default to "src"
+* base - project source path default to "."
 * quoteChar - default to "
 * indentString - default to "  " (two spaces)
 * target (coffee support to be added)
