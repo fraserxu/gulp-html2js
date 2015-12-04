@@ -13,17 +13,19 @@ Install with [npm](https://npmjs.org/package/gulp-html2js)
 ## Usage
 
 ```javascript
+var gulp = require('gulp')
 var concat = require('gulp-concat')
-var html2js = require('gulp-html2js')
+var html2js = require('../')
 
-gulp.task('scripts', function() {
-  gulp.src('fixtures/*.html')
-    .pipe(html2js({
-      outputModuleName: 'template-test',
-      useStrict: true
-    }))
-    .pipe(concat('template.js'))
-    .pipe(gulp.dest('./'))
+gulp.task('default', function () {
+    gulp.src('templates/*.html')
+        .pipe(html2js({
+            outputModuleName: 'template-test',
+            useStrict: true,
+            target: 'js'
+        }))
+        .pipe(concat('template.js'))
+        .pipe(gulp.dest('dist/'))
 })
 ```
 
@@ -39,4 +41,4 @@ gulp.task('scripts', function() {
 
 (MIT License)
 
-Copyright (c) 2013 Fraserxu <xvfeng123@gmail.com>
+Copyright (c) 2015 Fraserxu <xvfeng123@gmail.com>
