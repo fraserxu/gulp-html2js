@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "gulp-util": "~2.2.0",
-    "html-minifier": "~0.5.4",
+    "html-minifier": "~0.6.7",
     "map-stream": "^0.1.0"
   }
 }
