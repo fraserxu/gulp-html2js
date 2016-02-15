@@ -17,11 +17,12 @@
   },
   "devDependencies": {
     "gulp": "^3.6.0",
-    "gulp-concat": "^2.2.0"
+    "gulp-concat": "^2.6.0"
   },
   "dependencies": {
     "gulp-util": "~2.2.0",
     "html-minifier": "~0.6.7",
-    "map-stream": "^0.1.0"
+    "map-stream": "^0.1.0",
+    "through2": "^2.0.0"
   }
 }
