@@ -11,5 +11,9 @@ pids
 logs
 results
 
+.idea/**
+
 npm-debug.log
 node_modules
+examples/dist/*.*
+!.gitkeep
