@@ -12,20 +12,37 @@ Install with [npm](https://npmjs.org/package/gulp-html2js)
 
 ## Usage
 
+### Angular
+
 ```javascript
-var gulp = require('gulp')
-var concat = require('gulp-concat')
-var html2js = require('../')
+var gulp = require('gulp');
+var html2js = require('gulp-html2js');
 
 gulp.task('default', function () {
     gulp.src('templates/*.html')
-        .pipe(html2js({
-            outputModuleName: 'template-test',
-            useStrict: true,
-            target: 'js'
+        .pipe(html2js('angular.js', {
+            adapter: 'angular',
+            base: 'templates',
+            name: 'angular-demo'
         }))
-        .pipe(concat('template.js'))
-        .pipe(gulp.dest('dist/'))
+        .pipe(gulp.dest('dist/'));
+})
+```
+
+### Vanilla
+
+```javascript
+var gulp = require('gulp');
+var html2js = require('gulp-html2js');
+
+gulp.task('default', function () {
+    gulp.src('templates/*.html')
+        .pipe(html2js('js-demo.js', {
+            adapter: 'javascript',
+            base: 'templates',
+            name: 'js-demo'
+        }))
+        .pipe(gulp.dest('dist/'));
 })
 ```
 
