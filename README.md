@@ -26,7 +26,7 @@ gulp.task('default', function () {
             name: 'angular-demo'
         }))
         .pipe(gulp.dest('dist/'));
-})
+});
 ```
 
 ### Vanilla
@@ -43,7 +43,7 @@ gulp.task('default', function () {
             name: 'js-demo'
         }))
         .pipe(gulp.dest('dist/'));
-})
+});
 ```
 
 ## Available options
