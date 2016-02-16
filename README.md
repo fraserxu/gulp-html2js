@@ -52,7 +52,7 @@ gulp.task('default', function () {
 * indentString - default to "  " (two spaces)
 * target (coffee support to be added)
 * useStrict - default to false
-* outputModuleName - default ot module name
+* name - module name
 
 ## LICENSE
 
