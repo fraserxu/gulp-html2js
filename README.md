@@ -2,7 +2,6 @@ gulp-html2js
 ============
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
 [![Downloads][downloads-image]][downloads-url]
 
 Gulp plugin for converting AngularJS templates to JavaScript
@@ -66,7 +65,5 @@ Copyright (c) 2015 Fraserxu <xvfeng123@gmail.com>
 
 [npm-image]: https://img.shields.io/npm/v/gulp-html2js.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/gulp-html2js
-[travis-image]: https://img.shields.io/travis/fraserxu/gulp-html2js/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/fraserxu/gulp-html2js
 [downloads-image]: http://img.shields.io/npm/dm/gulp-html2js.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/gulp-html2js
