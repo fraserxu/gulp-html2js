@@ -15,7 +15,7 @@ Install with [npm](https://npmjs.org/package/gulp-html2js)
 ```javascript
 var gulp = require('gulp')
 var concat = require('gulp-concat')
-var html2js = require('../')
+var html2js = require('gulp-html2js')
 
 gulp.task('default', function () {
     gulp.src('templates/*.html')
