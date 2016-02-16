@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var htmlToJs = require('./lib/compile');
 var PluginError = gutil.PluginError;
 var File = gutil.File;
-const PLUGIN_NAME = 'gulp-html2js';
+var PLUGIN_NAME = 'gulp-html2js';
 
 // file can be a vinyl file object or a string
 // when a string it will construct a new one
