@@ -2,10 +2,9 @@
 
 var through = require('through2');
 var path = require('path');
-var gutil = require('gulp-util');
 var htmlToJs = require('./lib/compile');
-var PluginError = gutil.PluginError;
-var File = gutil.File;
+var PluginError = require("plugin-error");
+var Vinyl = require('vinyl');
 var PLUGIN_NAME = 'gulp-html2js';
 
 // file can be a vinyl file object or a string
@@ -22,7 +21,7 @@ module.exports = function (file, opt) {
     opt.htmlmin = opt.htmlmin || {}
     opt.useStrict = opt.useStrict || false
     opt.outputModuleName = opt.outputModuleName || false;
-    opt.separator = gutil.linefeed;
+    opt.separator = "\n";
 
     var _module,
         latestFile,
@@ -68,7 +67,7 @@ module.exports = function (file, opt) {
             joinedFile = latestFile.clone({contents: false});
             joinedFile.path = path.join(latestFile.base, file);
         } else {
-            joinedFile = new File(file);
+            joinedFile = new Vinyl(file);
         }
 
         joinedFile.contents = _module.content;
