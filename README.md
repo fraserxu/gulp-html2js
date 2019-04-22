@@ -1,17 +1,19 @@
-gulp-html2js
+gulp4-html2js
 ============
 
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 
-Gulp plugin for converting AngularJS templates to JavaScript
+Fork for gulp-html2js package. 
+Resolved all vulnerabilities, removed depricated gulp-utils.
+Gulp v4 plugin for converting AngularJS templates to JavaScript
 
 See more from [grunt-html2js](https://github.com/karlgoldstein/grunt-html2js)
 
 
 ## Install
 Install with [npm](https://npmjs.org/package/gulp-html2js)
-`npm install --save-dev gulp-html2js`
+`npm install --save-dev gulp4-html2js`
 
 ## Usage
 
@@ -19,7 +21,7 @@ Install with [npm](https://npmjs.org/package/gulp-html2js)
 
 ```javascript
 var gulp = require('gulp');
-var html2js = require('gulp-html2js');
+var html2js = require('gulp4-html2js');
 
 gulp.task('default', function () {
     gulp.src('templates/*.html')
@@ -36,7 +38,7 @@ gulp.task('default', function () {
 
 ```javascript
 var gulp = require('gulp');
-var html2js = require('gulp-html2js');
+var html2js = require('gulp4-html2js');
 
 gulp.task('default', function () {
     gulp.src('templates/*.html')
