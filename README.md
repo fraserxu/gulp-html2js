@@ -65,7 +65,7 @@ gulp.task('default', function () {
 
 Copyright (c) 2015 Fraserxu <xvfeng123@gmail.com>
 
-[npm-image]: https://img.shields.io/npm/v/gulp-html2js.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/gulp-html2js
-[downloads-image]: http://img.shields.io/npm/dm/gulp-html2js.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/gulp-html2js
+[npm-image]: https://img.shields.io/npm/v/gulp4-html2js.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/gulp4-html2js
+[downloads-image]: http://img.shields.io/npm/dm/gulp4-html2js.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/gulp4-html2js
