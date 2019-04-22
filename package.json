@@ -1,6 +1,6 @@
 {
   "name": "gulp4-html2js",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Fork for gulp-html2js package. Resolved all vulnerabilities, removed depricated gulp-utils.  Gulp v4 plugin for converting AngularJS templates to JavaScript",
   "main": "index.js",
   "repository": {
